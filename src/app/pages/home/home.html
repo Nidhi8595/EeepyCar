@@ -1,0 +1,58 @@
+<div
+  class="relative flex flex-col items-center justify-center h-[100vh] w-full text-center space-y-8 transition-all duration-700 ease-in-out overflow-hidden"
+  [ngClass]="bgColor()"
+>
+
+  <div class="absolute inset-0 z-0 opacity-40 animate-theme-layer" [ngClass]="currentName().themeClass + '-layer'"></div>
+
+  <div
+    class="relative z-10 flex flex-col items-center justify-center text-center w-[90%] md:w-[600px] h-auto p-10 space-y-10 rounded-[40px] shadow-3xl backdrop-blur-md border-4 border-white/50 transform perspective-1000 rotate-x-6 hover:rotate-x-0 transition-transform duration-1000 bg-black/15"
+    [class.shake-animation]="isGuessing()"
+  >
+
+    <div
+      class="character-reveal"
+      [class.animate-reveal]="!isGuessing()"
+      [attr.data-key]="getName()"
+    >
+        <h1
+          class="text-5xl md:text-7xl font-black mb-4 drop-shadow-2xl italic"
+          [appNameColor]="bgColor()"
+        >
+          You're <span class="font-extrabold not-italic">{{ getName() }}</span>
+          <span
+            class="inline-block m-2"
+            [ngClass]="{'animate-heartbeat': !isGuessing()}"
+          >
+            {{ getNameEmoji() }}
+          </span>
+        </h1>
+    </div>
+
+    <p
+        class="text-xl md:text-2xl font-bold italic transition-opacity duration-500"
+        [ngClass]="{'opacity-100': !isGuessing(), 'opacity-0': isGuessing()}"
+    >
+        &mdash; {{ getNameCaption() }}
+    </p>
+
+    <button
+      (click)="changeName()"
+      [disabled]="isGuessing()"
+      class="px-10 py-5 mt-8 text-xl font-extrabold tracking-wider rounded-full shadow-2xl transition-all duration-300 z-50 transform hover:scale-[1.05] active:scale-[0.98] active:shadow-inner disabled:opacity-70 disabled:cursor-not-allowed
+             bg-gradient-to-r from-violet-500 to-fuchsia-600 text-white hover:from-violet-600 hover:to-fuchsia-700 button-pulse-animation"
+    >
+      <span *ngIf="!isGuessing()">
+        Lemme Guess your name <span class="ml-2">🤔</span>
+      </span>
+      <span *ngIf="isGuessing()" class="flex items-center">
+        Scanning Aura...
+        <svg class="animate-spin h-6 w-6 ml-3 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </span>
+    </button>
+  </div>
+
+</div>

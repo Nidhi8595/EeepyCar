@@ -1,0 +1,146 @@
+/* Animation for the button to draw attention */
+@keyframes pulse-animation {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 129, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 107, 129, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse-animation 2s infinite;
+}
+
+/* Animation for the card while guessing */
+@keyframes shake {
+  0%, 100% { transform: translateX(0) }
+  20%, 60% { transform: translateX(-6px) }
+  40%, 80% { transform: translateX(6px) }
+}
+
+.shake-animation {
+  animation: shake 0.2s linear 4; /* Shakes 4 times quickly */
+}
+
+/* Simple keyframe for the title/emoji */
+@keyframes scale-up {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scale-up-animation {
+    animation: scale-up 0.5s ease-out;
+}
+
+/* Utilities for slower, smoother movements */
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(-5%); }
+    50% { transform: translateY(0); }
+}
+
+.animate-bounce-slow {
+    animation: bounce-slow 4s infinite ease-in-out;
+}
+
+/* Perspective utility for the 3D card effect */
+.perspective-1000 {
+    perspective: 1000px;
+}
+.rotate-x-6 {
+    transform: rotateX(6deg);
+}
+
+/* 1. Global Reset for smooth animations */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* 2. Button Pulse Animation - More subtle and contained */
+@keyframes button-pulse-animation {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 38, 211, 0.7); }
+  70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(192, 38, 211, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192, 38, 211, 0); }
+}
+
+.button-pulse-animation {
+  animation: button-pulse-animation 2s infinite cubic-bezier(0.66, 0.01, 0, 1.05);
+}
+
+/* 3. Reveal/Entrance Animation for the Character Text */
+@keyframes character-reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+.character-reveal.animate-reveal {
+    animation: character-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    /* This key attribute ensures the animation restarts on signal change */
+    animation-delay: 0.1s;
+}
+
+/* 4. Emoji Heartbeat Micro-Interaction */
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+.animate-heartbeat {
+    animation: heartbeat 1s infinite alternate ease-in-out;
+}
+
+/* 5. Theme Layer Animation (Subtle movement) */
+@keyframes theme-layer-pan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+.animate-theme-layer {
+    background-size: 300% 300%;
+    animation: theme-layer-pan 60s ease-in-out infinite alternate;
+}
+
+/* 6. Specific Thematic Backgrounds for the Layer */
+/* Example 1: Sleepy Car (Stars/Dust) */
+.theme-sleepy-car-layer {
+    background-image: radial-gradient(circle at top right, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                      radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.3) 0%, transparent 60%);
+}
+/* Example 2: Wakey Wakey Car (Speed Lines/Energy) */
+.theme-wakey-car-layer {
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 2px, transparent 2px, transparent 10px);
+    background-size: 50px 50px;
+}
+/* You would add a unique background for every theme */
+
+/* 7. Shake Animation (Kept from before, but good) */
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0) }
+  20%, 60% { transform: translate(-8px, 0) }
+  40%, 80% { transform: translate(8px, 0) }
+}
+
+.shake-animation {
+  animation: shake 0.15s linear 5;
+}
